@@ -1,8 +1,8 @@
 import React from 'react';
-import './App.css';
 import axios from 'axios';
-import Card from './components/Card'
+import UserCard from './components/UserCard'
 import FollowerCard from './components/FollowerCard';
+import styled from "styled-components";
 
 class App extends React.Component {
   constructor(){
@@ -16,7 +16,7 @@ class App extends React.Component {
   componentDidMount() {
     axios.get('https://api.github.com/users/pvaidya56')
       .then(res => {
-        // console.log(res);
+        console.log(res);
         this.setState({ pvaidya56: res.data})
         // console.log(this.state)
       })
@@ -40,13 +40,20 @@ class App extends React.Component {
   
   render(){
     return (
-     <>
-     <Card key={0} user={this.state["pvaidya56"]}/>
+     <Div>
+     <UserCard key={0} user={this.state["pvaidya56"]}/>
      <FollowerCard followers={this.state.followers}/>
-     </>
+     </Div>
     );
   }
   
 }
+
+const Div = styled.div`
+  display: flex;
+  justify-content: space-around;
+  flex-wrap: wrap;
+  background-color: aliceblue;
+`;
 
 export default App;

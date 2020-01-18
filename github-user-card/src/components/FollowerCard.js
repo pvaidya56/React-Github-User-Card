@@ -1,9 +1,9 @@
 import React from 'react';
-import Card from './Card';
+import UserCard from './UserCard';
 
 const FollowerCard = ({ followers }) => {
  return followers.map((item, index) => {
-     return <Card key={index + 1} user={item} />
+     return <UserCard key={index + 1} user={item} />
  });
 };
 
